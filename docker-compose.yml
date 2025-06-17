@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    image: webeltek2017/repo24:student_registry_app
+    ports:
+      - "3030:3030" # Map port 3030 on the host to port 3030 in the container
+    environment:
+      - NODE_ENV=production
