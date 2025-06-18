@@ -9,6 +9,10 @@ pipeline {
     //     nodejs "${NODE_VERSION}"
     // }
 
+    environment {
+        DEPLOY_HOOK = credentials('RENDER_DEPLOY_HOOK')
+    }
+
     stages {
         stage('Checkout the repository') {
             steps {
@@ -35,6 +39,20 @@ pipeline {
                         sh 'npm test'
                     }
                 }
+            }
+        }
+
+        stage('Confirm Deploy') {
+            steps {
+                script {
+                input message: 'Do you want to deploy to production?', ok: 'Deploy'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'curl -X POST $DEPLOY_HOOK'
             }
         }
     }
