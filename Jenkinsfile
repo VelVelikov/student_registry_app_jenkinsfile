@@ -22,15 +22,19 @@ pipeline {
             }
         }
 
-        stage('Security audit') {
-            steps {
-                sh 'npm audit'
-            }
-        }
+        stage('Audit and Test Parallel'){
+            parallel {
+                stage('Security audit') {
+                    steps {
+                        sh 'npm audit'
+                    }
+                }
 
-        stage('Run Tests') {
-            steps {
-                sh 'npm test'
+                stage('Run Tests') {
+                    steps {
+                        sh 'npm test'
+                    }
+                }
             }
         }
     }
