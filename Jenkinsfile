@@ -20,6 +20,9 @@ pipeline {
             steps {
                 sh 'npm install'
             }
+        }
+
+        stage('Security audit') {
             steps {
                 sh 'npm audit'
             }
