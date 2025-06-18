@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
+        stage('Checkout the repository') {
             steps {
                 checkout scm
             }
@@ -19,14 +19,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
-            }
-        }
-
-        stage('Start Application') {
-            steps {
-                // Run app in background
-                sh 'nohup npm start &'
-                sleep 5 // Give it time to start
             }
         }
 
