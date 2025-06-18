@@ -1,13 +1,13 @@
 pipeline {
     agent any
 
-    environment {
-        NODE_VERSION = 'node20'
-    }
+    // environment {
+    //     NODE_VERSION = 'node20'
+    // }
 
-    tools {
-        nodejs "${NODE_VERSION}"
-    }
+    // tools {
+    //     nodejs "${NODE_VERSION}"
+    // }
 
     stages {
         stage('Checkout the repository') {
