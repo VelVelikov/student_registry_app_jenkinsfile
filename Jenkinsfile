@@ -9,9 +9,9 @@ pipeline {
     //     nodejs "${NODE_VERSION}"
     // }
 
-    environment {
-        DEPLOY_HOOK = credentials('RENDER_DEPLOY_HOOK')
-    }
+    // environment {
+    //     DEPLOY_HOOK = credentials('RENDER_DEPLOY_HOOK')
+    // }
 
     stages {
         stage('Checkout the repository') {
@@ -50,11 +50,11 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                sh 'curl -X POST $DEPLOY_HOOK'
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         sh 'curl -X POST $DEPLOY_HOOK'
+        //     }
+        // }
     }
 
     post {
